@@ -96,11 +96,7 @@ public class Lecture15 {
         while (true) {
             System.out.println("Введите команду: ");
             input = scanner.nextLine();
-            if (commands.containsKey(input)) {
-                System.out.println(commands.get(input));
-            } else {
-                System.out.println("Извините, но такой команды нет");
-            }
+            System.out.println(commands.getOrDefault(input, "Извините, но такой команды нет"));
             if (input.equals("Выйти")) {
                 break;
             }

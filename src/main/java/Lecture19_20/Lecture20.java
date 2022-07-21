@@ -4,8 +4,8 @@ package Lecture19_20;
 // Можете добавить еще private метод для расчета площади и использовать его в методе описания обьекта.
 
 class Point {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Point(int x, int y) {
         this.x = x;
@@ -24,6 +24,7 @@ class Rectangle {
     private final int sideD;
 
     public Rectangle(int sideA, int sideB, int sideC, int sideD) {
+
         this.sideA = sideA;
         this.sideB = sideB;
         this.sideC = sideC;
@@ -31,10 +32,7 @@ class Rectangle {
     }
 
     public Rectangle(Point a, Point b, Point c, Point d) {
-        this.sideA = a.getDistance(b);
-        this.sideB = b.getDistance(c);
-        this.sideC = c.getDistance(d);
-        this.sideD = d.getDistance(a);
+        this(a.getDistance(b), b.getDistance(c), c.getDistance(d), d.getDistance(a));
     }
 
     public boolean isSquare() {

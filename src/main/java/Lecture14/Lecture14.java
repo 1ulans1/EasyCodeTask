@@ -1,6 +1,8 @@
 package Lecture14;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Lecture14 {
     //1. Метод выводит все числа кратные 3 от нуля до какого-то числа (входной параметр)
@@ -116,6 +118,45 @@ public class Lecture14 {
         int[] newArray = new int[array.length / 2];
         for (int i = 0; i < newArray.length; i++) {
             newArray[i] = array[i] + array[array.length - 1 - i];
+        }
+        return newArray;
+    }
+
+    //11. Метод принимает на вход массив чисел и отдает на выход массив вдвое больше. Первый и второй элемент нового массива равны первому элементу первого массива. Третий и четвертый элементы равны второму элементу первого массива. Типа {1, 2, 3} → {1, 1, 2, 2, 3, 3}
+    public static int[] task11(int[] array) {
+        int[] newArray = new int[array.length * 2];
+        for (int i = 0, j = 0; i < array.length; i++) {
+            newArray[j++] = array[i];
+            newArray[j++] = array[i];
+        }
+        return newArray;
+    }
+
+    //Метод принимает на вход массив чисел и отдает отфильтрованный – т.е. без дубликатов. т.е. {1, 1, 2, 3} → {1, 2, 3}
+    public static int[] task12(int[] array) {
+        int[] newArray = new int[array.length];
+        int j = 0;
+        for (int value : array) {
+            boolean isUnique = true;
+            for (int k = 0; k < j; k++) {
+                if (value == newArray[k]) {
+                    isUnique = false;
+                    break;
+                }
+            }
+            if (isUnique) {
+                newArray[j++] = value;
+            }
+        }
+        return newArray;
+    }
+
+    //3. Метод принимает 2 массива чисел и выводит новый массив,
+    // где каждый член массива это произведение членов соответственно. т.е. {1, 2, 3};{4, 5, 6} → {4, 10, 18}
+    public static int[] task13(int[] array1, int[] array2) {
+        int[] newArray = new int[array1.length];
+        for (int i = 0; i < array1.length; i++) {
+            newArray[i] = array1[i] * array2[i];
         }
         return newArray;
     }
